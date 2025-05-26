@@ -6,7 +6,7 @@ LOCAL_MODULE := SDL2_image
 
 # Enable this if you want to support loading JPEG images
 # The library path should be a relative path to this directory.
-SUPPORT_JPG := true
+SUPPORT_JPG := false
 JPG_LIBRARY_PATH := external/jpeg-9
 
 # Enable this if you want to support loading PNG images
