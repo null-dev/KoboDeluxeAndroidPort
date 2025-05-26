@@ -4,3 +4,4 @@
 /obj
 .project.properties
 .DS_Store
+/.gradle
