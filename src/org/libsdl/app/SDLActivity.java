@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.libsdl.app.GestureView.onDirectionChangedListener;
 import org.libsdl.app.JoystickView.OnJoystickMoveListener;
 
 import android.app.*;
@@ -43,7 +42,6 @@ public class SDLActivity extends Activity {
     protected static SDLSurface mSurface;
     protected static View mTextEdit;
     protected static ViewGroup mLayout;
-    protected static GestureView mGV;
     protected static SDLJoystickHandler mJoystickHandler;
 
     // This is what SDL runs in. It invokes SDL_main(), eventually
@@ -68,7 +66,6 @@ public class SDLActivity extends Activity {
         // Otherwise, when exiting the app and returning to it, these variables *keep* their pre exit values
         mSingleton = null;
         mSurface = null;
-        mGV = null;
         mTextEdit = null;
         mLayout = null;
         mJoystickHandler = null;
@@ -104,68 +101,40 @@ public class SDLActivity extends Activity {
         mLayout.addView(mSurface);
         getLayoutInflater().inflate(R.layout.joystick, mLayout);
         setContentView(mLayout);
-        mGV = (GestureView) findViewById(R.id.joystick_view);
-        mGV.setOnDirectionChangedListener(new onDirectionChangedListener() {
+        JoystickView joystick = (JoystickView) findViewById(R.id.joystick_view);
+        joystick.setOnJoystickMoveListener(new OnJoystickMoveListener() {
 			
 			@Override
-			public void onDirectionChanged(int direction, MotionEvent event) {
-				Log.d(TAG, "onDirectionChanged : "+direction);
-				int dir = KeyEvent.KEYCODE_DPAD_LEFT;
+			public void onValueChanged(int angle, int power, int direction) {
 				switch (direction) {
-				case GestureView.DIRECTION_LEFT:
-					dir = KeyEvent.KEYCODE_DPAD_LEFT;
-					break;
-				case GestureView.DIRECTION_RIGHT:
-					dir = KeyEvent.KEYCODE_DPAD_RIGHT;
-					break;
-				case GestureView.DIRECTION_UP:
-					dir = KeyEvent.KEYCODE_DPAD_UP;
-					break;
-				case GestureView.DIRECTION_DOWN:
-					dir = KeyEvent.KEYCODE_DPAD_DOWN;
-					break;
-				case GestureView.DIRECTION_ENTER:
-					dir = KeyEvent.KEYCODE_DPAD_CENTER;
-					break;
-				}
-				onNativeKeyDown(dir);
-				onNativeKeyUp(dir);
+                case JoystickView.FRONT:
+                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_UP);
+                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_UP);
+                    break;
+                case JoystickView.FRONT_RIGHT:
+                    break;
+                case JoystickView.RIGHT:
+                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_LEFT);
+                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_LEFT);
+                    break;
+                case JoystickView.RIGHT_BOTTOM:
+                    break;
+                case JoystickView.BOTTOM:
+                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_DOWN);
+                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_DOWN);
+                    break;
+                case JoystickView.BOTTOM_LEFT:
+                    break;
+                case JoystickView.LEFT:
+                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT);
+                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_RIGHT);
+                    break;
+                case JoystickView.LEFT_FRONT:
+                    break;
+                default:
+                }
 			}
-		});
-//        JoystickView joystick = (JoystickView) findViewById(R.id.joystick_view);
-//        joystick.setOnJoystickMoveListener(new OnJoystickMoveListener() {
-//			
-//			@Override
-//			public void onValueChanged(int angle, int power, int direction) {
-//				switch (direction) {
-//                case JoystickView.FRONT:
-//                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_UP);
-//                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_UP);
-//                    break;
-//                case JoystickView.FRONT_RIGHT:
-//                    break;
-//                case JoystickView.RIGHT:
-//                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_LEFT);
-//                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_LEFT);
-//                    break;
-//                case JoystickView.RIGHT_BOTTOM:
-//                    break;
-//                case JoystickView.BOTTOM:
-//                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_DOWN);
-//                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_DOWN);
-//                    break;
-//                case JoystickView.BOTTOM_LEFT:
-//                    break;
-//                case JoystickView.LEFT:
-//                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT);
-//                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_RIGHT);
-//                    break;
-//                case JoystickView.LEFT_FRONT:
-//                    break;
-//                default:
-//                }
-//			}
-//		}, 20);
+		}, 20);
     }
 
     // Events
@@ -592,14 +561,12 @@ public class SDLActivity extends Activity {
      * 进入游戏
      */
     public static void enterGame(){
-    	mGV.setIsFlingOnlyMode(false);
     }
     
     /**
      * 退出游戏
      */
     public static void exitGame(){
-    	mGV.setIsFlingOnlyMode(true);
     }
     
 }
