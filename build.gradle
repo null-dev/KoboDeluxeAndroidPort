@@ -46,9 +46,3 @@ android {
     }
 
 }
-
-task ndkbuild(type: Exec) {
-    commandLine '/Users/ransj/Library/Android/ndk/ndk-build'
-}
-
-task build dependsOn ndkbuild;
