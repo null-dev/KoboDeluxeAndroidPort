@@ -81,7 +81,7 @@ void gamecontrol_t::clear()
 }
 
 
-int gamecontrol_t::map(SDLKey sym)
+int gamecontrol_t::map(SDL_Keycode sym)
 {
 	log_printf(ULOG, "game control map: %i", sym);
 /*
