@@ -25,6 +25,8 @@ import android.graphics.*;
 import android.media.*;
 import android.hardware.*;
 
+import ax.nd.kobodeluxe.R;
+
 
 /**
     SDL Activity
