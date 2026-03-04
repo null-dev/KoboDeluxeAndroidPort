@@ -5,4 +5,7 @@
 .project.properties
 .DS_Store
 /.gradle
-build/
+/local.properties
+/.idea
+/build
+/libs/*

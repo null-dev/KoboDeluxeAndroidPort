@@ -5,13 +5,18 @@ plugins {
 android {
     namespace = "ax.nd.kobodeluxe"
 
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "23.0.2"
 
-      lintOptions {
-          abortOnError false
-      }
-      
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 24
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
