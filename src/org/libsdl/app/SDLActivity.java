@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.libsdl.app.JoystickView.OnJoystickMoveListener;
+import org.libsdl.app.DPadView.DPadListener;
 
 import android.app.*;
 import android.content.*;
@@ -99,42 +99,20 @@ public class SDLActivity extends Activity {
 
         mLayout = new RelativeLayout(this);
         mLayout.addView(mSurface);
-        getLayoutInflater().inflate(R.layout.joystick, mLayout);
+        getLayoutInflater().inflate(R.layout.dpad, mLayout);
         setContentView(mLayout);
-        JoystickView joystick = (JoystickView) findViewById(R.id.joystick_view);
-        joystick.setOnJoystickMoveListener(new OnJoystickMoveListener() {
-			
-			@Override
-			public void onValueChanged(int angle, int power, int direction) {
-				switch (direction) {
-                case JoystickView.FRONT:
-                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_UP);
-                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_UP);
-                    break;
-                case JoystickView.FRONT_RIGHT:
-                    break;
-                case JoystickView.RIGHT:
-                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_LEFT);
-                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_LEFT);
-                    break;
-                case JoystickView.RIGHT_BOTTOM:
-                    break;
-                case JoystickView.BOTTOM:
-                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_DOWN);
-                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_DOWN);
-                    break;
-                case JoystickView.BOTTOM_LEFT:
-                    break;
-                case JoystickView.LEFT:
-                	onNativeKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT);
-                	onNativeKeyUp(KeyEvent.KEYCODE_DPAD_RIGHT);
-                    break;
-                case JoystickView.LEFT_FRONT:
-                    break;
-                default:
-                }
-			}
-		}, 20);
+        DPadView dpad = (DPadView) findViewById(R.id.dpad_view);
+        dpad.setDPadListener(new DPadListener() {
+            @Override
+            public void onDirectionPress(int keycode) {
+                onNativeKeyDown(keycode);
+            }
+
+            @Override
+            public void onDirectionRelease(int keycode) {
+                onNativeKeyUp(keycode);
+            }
+        });
     }
 
     // Events
