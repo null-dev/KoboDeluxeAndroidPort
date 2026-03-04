@@ -7,3 +7,5 @@
 /.gradle
 /local.properties
 /.idea
+/build
+/libs/*

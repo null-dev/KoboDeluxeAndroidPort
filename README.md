@@ -19,15 +19,19 @@ ScreenShots
 
 ![alt tag](https://github.com/ransj/KoboDeluxe/blob/master/screenshot/device-2016-04-30-164535.png)
 
-Release 
-
-V1.0 : https://github.com/ransj/KoboDeluxe/releases/download/1.0/kobodeluxe-release-1.0.apk
-
-
-Instructions
+## Development
 
 1. Clone this project use git
 2. Import project to Android studio
-3. run command "./gradlew clean build" in terminal
-4. press button run of android studio, enjoy it! 
+3. Build the native libs by running this command in the repo root:
+   
+   ```
+   $ANDROID_NDK_HOME/ndk-build
+   ```
+4. Run the command to build & package the app:
+   
+   ```
+   ./gradlew clean build
+   ```
+5. Find the APK in `build/outputs/apk`
 
