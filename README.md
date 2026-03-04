@@ -5,7 +5,7 @@ Android version of Kobo Deluxe. Kobo Deluxe is a famous、open source game base 
 - Credit to [ransj](https://github.com/ransj) for the original port of this game to Android that this repo is based on
 
 ## Download
-Visit the [releases page](releases).
+Visit the [releases page](https://github.com/null-dev/KoboDeluxeAndroidPort/releases).
 
 ## Screenshots:
 
