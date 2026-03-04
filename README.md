@@ -1,23 +1,21 @@
 # KoboDeluxe
 Android version of Kobo Deluxe. Kobo Deluxe is a famous、open source game base on SDL(Simple DirectMedia Layer).
-Offical home of Kobo Deluxe : http://olofson.net/kobodl/
 
-This project depends on these projects below : 
+- Official home of Kobo Deluxe : http://olofson.net/kobodl/
+- Credit to [ransj](https://github.com/ransj) for the original port of this game to Android that this repo is based on
 
-1. Kobo Deluxe  : http://olofson.net/kobodl/
-2. SDL 2.0      : https://www.libsdl.org/
-3. SDL Image    : https://www.libsdl.org/projects/SDL_image/
-4. Android      : https://www.android.com/
+## Download
+Visit the [releases page](releases).
 
-ScreenShots
+## Screenshots:
 
-![alt tag](https://github.com/ransj/KoboDeluxe/blob/master/screenshot/device-2016-04-30-164344.png)
+![screenshot 1](screenshot/device-2016-04-30-164344.png)
 
-![alt tag](https://github.com/ransj/KoboDeluxe/blob/master/screenshot/device-2016-04-30-164425.png)
+![screenshot 2](screenshot/device-2016-04-30-164425.png)
 
-![alt tag](https://github.com/ransj/KoboDeluxe/blob/master/screenshot/device-2016-04-30-164457.png)
+![screenshot 3](screenshot/device-2016-04-30-164457.png)
 
-![alt tag](https://github.com/ransj/KoboDeluxe/blob/master/screenshot/device-2016-04-30-164535.png)
+![screenshot 4](screenshot/device-2016-04-30-164535.png)
 
 ## Development
 
@@ -35,3 +33,11 @@ ScreenShots
    ```
 5. Find the APK in `build/outputs/apk`
 
+## Dependencies
+
+This project depends on these projects below :
+
+1. Kobo Deluxe  : http://olofson.net/kobodl/
+2. SDL 2.0      : https://www.libsdl.org/
+3. SDL Image    : https://www.libsdl.org/projects/SDL_image/
+4. Android      : https://www.android.com/
